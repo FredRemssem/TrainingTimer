@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interval Timer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Interval Timer</h1>
+
+        <div id="setup" class="input-group">
+            <label>Rounds: <input type="number" id="rounds" value="10"></label>
+            <label>Travail (sec): <input type="number" id="work" value="30"></label>
+            <label>Repos (sec): <input type="number" id="rest" value="10"></label>
+            <button onclick="startTimer()">Lancer</button>
+        </div>
+
+        <div id="timer-display" class="hidden">
+            <h2 id="status">PRÊT</h2>
+            <div id="time-left">00</div>
+            <p>Round: <span id="current-round">0</span> / <span id="total-rounds">0</span></p>
+            <button onclick="resetTimer()" class="btn-reset">Stop / Reset</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
