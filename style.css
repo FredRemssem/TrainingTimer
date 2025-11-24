@@ -18,6 +18,22 @@ body {
     width: 300px;
 }
 
+/* Style de l'image d'accueil */
+.header-image {
+    /* Assure que l'image est centrée */
+    display: block; 
+    /* Définit une taille maximale pour ne pas déborder */
+    max-width: 150px; 
+    height: auto;
+    /* Centre l'image horizontalement */
+    margin: 0 auto 15px auto; 
+    /* Ajoute un peu de marge en bas */
+}
+.container h1 {
+    margin-top: 5px;
+    margin-bottom: 25px; /* Espace le titre de la zone de configuration */
+}
+
 input {
     width: 50px;
     padding: 5px;
