@@ -79,23 +79,44 @@ button {
     margin-bottom: -5px; /* Remonte le label légèrement au-dessus du stepper */
     font-size: 1.1em;
 }
-
-/* .control est le conteneur du STEPER (bouton - / input / bouton +) */
+/* Le .control est le conteneur du STEPER (maintenant à l'intérieur du #setup) */
 .control {
-    /* Utilisation de Flexbox pour aligner horizontalement le stepper */
     display: flex;
     align-items: center;
     justify-content: center; /* Centre le stepper au milieu du conteneur #setup */
-    overflow: hidden;
+    margin: 0 auto;
+    width: fit-content;
     border-radius: 5px;
-    width: fit-content; /* Le conteneur ne prend que la largeur nécessaire */
-    margin: 0 auto; /* Centre le conteneur sur l'axe horizontal */
+    overflow: hidden;
 }
 
-/* Styles des boutons du stepper (- et +) */
-.control button {
-    /* Réinitialisation des styles de la règle générale 'button' */
-    display: block; 
+/* Styles pour le mode compact Min:Sec */
+.stepper-complex {
+    /* Assure que l'alignement soit horizontal pour le min:sec */
+    display: flex;
+    align-items: center;
+}
+
+.stepper-complex input {
+    width: 35px;
+    height: 30px;
+    margin: 0;
+    border-radius: 0;
+    background-color: #555;
+    color: white;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.stepper-complex .separator {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ccc;
+    padding: 0 5px;
+}
+
+/* Styles pour les boutons (+/-) du stepper (ils sont aux extrémités) */
+.stepper-complex button {
     width: 30px; 
     height: 30px;
     padding: 0;
@@ -103,27 +124,14 @@ button {
     font-size: 1.2rem;
     background-color: #444; 
     border-radius: 0; 
-    flex-shrink: 0;
 }
 
-/* Styles des inputs dans le stepper */
-.control input {
-    width: 40px; 
-    height: 30px; 
-    margin: 0;
-    border-radius: 0; 
-    background-color: #555; 
-    color: white;
-    /* On force l'alignement pour ces inputs */
-    display: block; 
-}
-
-/* Styles pour les arrondis des boutons aux extrémités du stepper */
-.control button:first-child {
+/* Styles pour les arrondis (seulement les boutons extérieurs) */
+.stepper-complex button:first-child {
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
 }
-.control button:last-of-type {
+.stepper-complex button:last-of-type {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }

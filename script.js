@@ -32,31 +32,49 @@ function makeSound(frequency, duration) {
         oscillator.stop();
     }, duration);
 }
-
 /**
- * Incrémente ou décrémente la valeur d'un champ input.
- * @param {string} id - L'ID du champ input à modifier ('rounds', 'work', ou 'rest').
- * @param {number} delta - La valeur à ajouter (+1, -1, +5, -5, etc.).
+ * Incrémente/décrémente les minutes ou secondes, avec gestion des limites (0-59 sec).
+ * @param {string} mode - 'work' ou 'rest'.
+ * @param {string} unit - 'min' ou 'sec'.
+ * @param {number} delta - La valeur à ajouter.
  */
+function changeTime(mode, unit, delta) {
+    const input = document.getElementById(`${mode}-${unit}`);
+    let currentValue = parseInt(input.value) || 0;
+    let newValue = currentValue + delta;
+
+    if (unit === 'sec') {
+        // Logique pour les secondes : boucle entre 0 et 59
+        if (newValue > 59) {
+            newValue = 0;
+            // On incrémente la minute si on passe de 59 à 60
+            if (delta > 0) changeTime(mode, 'min', 1);
+        } else if (newValue < 0) {
+            newValue = 55; // On va à 55s si on décrémente en dessous de 0
+            // On décrémente la minute si on passe de 0 à -1
+            if (delta < 0) changeTime(mode, 'min', -1);
+        }
+    } else if (unit === 'min') {
+        // Logique pour les minutes : ne descend pas sous zéro
+        if (newValue < 0) {
+            newValue = 0;
+        }
+    }
+    
+    // Met à jour l'affichage en ajoutant un zéro si nécessaire (padStart)
+    input.value = String(newValue).padStart(2, '0');
+}
+
 function changeValue(id, delta) {
     const input = document.getElementById(id);
-    let currentValue = parseInt(input.value) || 0; // Récupère la valeur ou 0 si vide/invalide
+    let currentValue = parseInt(input.value) || 0; 
     let newValue = currentValue + delta;
     
-    // Appliquer les contraintes de valeur minimale
-    if (id === 'rounds' || id === 'work') {
-        // Rounds et temps de travail : minimum 1 seconde/round
+    if (id === 'rounds') {
         if (newValue >= 1) {
             input.value = newValue;
         } else {
-            input.value = 1; // Ne descend pas en dessous de 1
-        }
-    } else if (id === 'rest') {
-        // Temps de repos : minimum 0 seconde
-        if (newValue >= 0) {
-            input.value = newValue;
-        } else {
-            input.value = 0; // Ne descend pas en dessous de 0
+            input.value = 1; 
         }
     }
 }
@@ -66,21 +84,31 @@ function changeValue(id, delta) {
 // =================================================================
 
 function startTimer() {
-    // 1. Récupérer les valeurs
-    totalRoundsInput = parseInt(document.getElementById('rounds').value);
-    workTimeInput = parseInt(document.getElementById('work').value);
-    restTimeInput = parseInt(document.getElementById('rest').value);
+    // 1. Récupérer et convertir les valeurs des inputs Min:Sec
+    
+    // Travail : (Minutes * 60) + Secondes
+    const workMin = parseInt(document.getElementById('work-min').value);
+    const workSec = parseInt(document.getElementById('work-sec').value);
+    workTimeInput = (workMin * 60) + workSec;
 
-    // 2. Masquer la config, afficher le timer
+    // Repos : (Minutes * 60) + Secondes
+    const restMin = parseInt(document.getElementById('rest-min').value);
+    const restSec = parseInt(document.getElementById('rest-sec').value);
+    restTimeInput = (restMin * 60) + restSec;
+    
+    // Rounds (inchangé)
+    totalRoundsInput = parseInt(document.getElementById('rounds').value);
+
+
+    // 2. Masquer la config, afficher le timer (inchangé)
     document.getElementById('setup').classList.add('hidden');
     document.getElementById('timer-display').classList.remove('hidden');
     
-    // 3. Initialiser pour le compte à rebours initial
+    // 3. Initialiser (inchangé)
     document.getElementById('total-rounds').innerText = totalRoundsInput;
     currentRound = 1;
     isWorking = true;
     
-    // Lancement du compte à rebours initial
     startCountdown(3); 
 }
 

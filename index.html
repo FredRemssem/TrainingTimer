@@ -13,25 +13,28 @@
 
         <div id="setup" class="input-group">
             
-            <label for="rounds">Rounds:</label>
-            <div class="control">                
-                <button type="button" onclick="changeValue('rounds', -1)">-</button>
+            <label for="rounds">Rounds:</label> 
+            <div class="control stepper-single">  <button type="button" onclick="changeValue('rounds', -1)">-</button>
                 <input type="number" id="rounds" value="10">
                 <button type="button" onclick="changeValue('rounds', 1)">+</button>
             </div>
             
-            <label for="work">Travail (sec):</label>
-            <div class="control">
-                <button type="button" onclick="changeValue('work', -5)">-</button>
-                <input type="number" id="work" value="30">
-                <button type="button" onclick="changeValue('work', 5)">+</button>
+            <label>Travail (Min:Sec):</label>
+            <div class="control stepper-complex">
+                <button type="button" onclick="changeTime('work', 'sec', -5)">-</button>
+                <input type="number" id="work-min" value="00" min="0" max="99">
+                <span class="separator">:</span>
+                <input type="number" id="work-sec" value="30" min="0" max="59">
+                <button type="button" onclick="changeTime('work', 'sec', 5)">+</button>
             </div>
-            
-            <label for="rest">Repos (sec):</label>
-            <div class="control">                
-                <button type="button" onclick="changeValue('rest', -5)">-</button>
-                <input type="number" id="rest" value="10">
-                <button type="button" onclick="changeValue('rest', 5)">+</button>
+
+            <label>Repos (Min:Sec):</label>
+            <div class="control stepper-complex">
+                <button type="button" onclick="changeTime('rest', 'sec', -5)">-</button>
+                <input type="number" id="rest-min" value="00" min="0" max="99">
+                <span class="separator">:</span>
+                <input type="number" id="rest-sec" value="10" min="0" max="59">
+                <button type="button" onclick="changeTime('rest', 'sec', 5)">+</button>
             </div>
             
             <button onclick="startTimer()">Lancer</button>
