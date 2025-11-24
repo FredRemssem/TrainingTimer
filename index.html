@@ -12,9 +12,18 @@
         <h1>Interval Timer</h1>
 
         <div id="setup" class="input-group">
-            <label>Rounds: <input type="number" id="rounds" value="10"></label>
-            <label>Travail (sec): <input type="number" id="work" value="30"></label>
-            <label>Repos (sec): <input type="number" id="rest" value="10"></label>
+            <div class="control">
+                <label for="rounds">Rounds:</label>
+                <input type="number" id="rounds" value="10">
+            </div>
+            <div class="control">
+                <label for="work">Travail (sec):</label>
+                <input type="number" id="work" value="30">
+            </div>
+            <div class="control">
+                <label for="rest">Repos (sec):</label>
+                <input type="number" id="rest" value="10">
+            </div>
             <button onclick="startTimer()">Lancer</button>
         </div>
 

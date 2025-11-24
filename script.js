@@ -126,7 +126,7 @@ function handlePhaseEnd() {
         // Fin de la phase de travail. On regarde s'il reste des rounds.
         if (currentRound < totalRoundsInput) {
             isWorking = false; // On passe au repos
-            //startCountdown(3); // Compte à rebours avant le repos
+            startRound(); // Compte à rebours avant le repos
         } else {
             finish();
         }

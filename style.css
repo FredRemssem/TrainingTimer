@@ -64,3 +64,35 @@ button {
 .finish-mode {
     color: #4CAF50; /* Vert foncé pour la fin */
 }
+#setup {
+    /* Transforme #setup en conteneur Flex */
+    display: flex;
+    /* Aligne les éléments les uns sous les autres */
+    flex-direction: column;
+    /* Espace les éléments verticalement */
+    gap: 10px; 
+}
+
+/* Règle pour chaque ligne (le nouveau .control) */
+.control {
+    /* Transforme chaque ligne en conteneur Flex */
+    display: flex;
+    /* Aligne les éléments (label et input) horizontalement */
+    justify-content: space-between; 
+    /* Les pousse aux extrémités de l'espace disponible */
+    align-items: center;
+}
+
+/* Règle pour les labels pour s'assurer qu'ils prennent l'espace nécessaire */
+.control label {
+    flex-grow: 1; /* Permet au label de s'étendre un peu si besoin */
+    text-align: left; /* Aligne le texte du label à gauche */
+    padding-right: 10px;
+}
+
+/* Règle pour l'input pour le garder à droite */
+.control input {
+    /* On retire le 'display: block' forcé par les anciennes règles */
+    display: inline-block; 
+    width: 60px; /* On augmente légèrement la largeur pour la lisibilité */
+}
