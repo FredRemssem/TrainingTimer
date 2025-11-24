@@ -51,7 +51,7 @@ button {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 /* Codes couleurs dynamiques */
