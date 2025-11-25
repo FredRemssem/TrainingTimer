@@ -12,16 +12,20 @@
 <body>
 
     <div class="container">
-        <img src="./images/panda-sport.png" alt="Panda faisant de la corde à sauter" class="header-image">
-        <h1>Training Timer</h1>
-        <p>For Dudu and Bubu</p>
+        <div id="title-bar">
+            <h1>Training Timer</h1>
+            <p>For Dudu and Bubu</p>
+        </div>
         <div id="mode-selection">
             <h2>Choisissez votre mode</h2>
+            <img src="./images/panda-sport.png" alt="Panda faisant de la corde à sauter" class="header-image">
             <button onclick="selectMode('interval')">Mode Intervalle (Cardio)</button>
+            <img src="./images/panda-pompe.png" alt="Panda faisant de la corde à sauter" class="header-image">
             <button onclick="selectMode('circuit')">Mode Circuit (Musculation)</button>
         </div>
 
         <div id="setup" class="input-group hidden">
+            <h2>Configuration Intervalle</h2>
             <label for="rounds">Répétitions:</label> 
             <div class="control stepper-single">  <button type="button" onclick="changeValue('rounds', -1)">-</button>
                 <input type="number" id="rounds" value="10">

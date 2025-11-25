@@ -10,6 +10,7 @@ import * as CircuitMode from './mode-circuit.js';
 // EXPOSÉE à WINDOW pour onclick="selectMode(...)"
 window.selectMode = function(mode) {
     currentMode = mode;    
+    document.getElementById('title-bar')?.classList.add('hidden');
     document.getElementById('mode-selection')?.classList.add('hidden');
     if (mode === 'interval') {
         document.getElementById('setup')?.classList.remove('hidden');
@@ -22,7 +23,8 @@ window.selectMode = function(mode) {
 window.goBack = function() {
     IntervalMode.resetTimer(); 
     document.getElementById('setup')?.classList.add('hidden');
-    document.getElementById('setup-circuit')?.classList.add('hidden');     
+    document.getElementById('setup-circuit')?.classList.add('hidden');    
+    document.getElementById('title-bar')?.classList.remove('hidden'); 
     document.getElementById('mode-selection')?.classList.remove('hidden');
     currentMode = null;
 }

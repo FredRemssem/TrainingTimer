@@ -30,7 +30,7 @@ body {
     max-width: 150px; 
     height: auto;
     /* Centre l'image horizontalement */
-    margin: 0 auto 15px auto; 
+    margin: 0 auto 0 auto; 
     /* Ajoute un peu de marge en bas */
 }
 .container h1 {
