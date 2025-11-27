@@ -86,7 +86,7 @@ export function addExercise(name = AVAILABLE_EXERCISES[0], reps = 10) {
         
         <div class="exercise-controls simplified">
             <!-- Contrôle des Répétitions (Reps) -->
-            <label>Reps :</label>
+            <label> Répétions :</label>
             <div class="control stepper-single compact-stepper">
                 <button type="button" onclick="changeExerciseData(${exerciseCounter}, 'reps', -1)">-</button>
                 <input type="number" id="reps-${exerciseCounter}" value="${reps}" min="1">
@@ -242,6 +242,7 @@ function startRestPhase(duration, isSetBreak) {
         if (remainingRestTime <= 0) {
             clearInterval(circuitTimer);
             makeSound(440, 300);
+            currentExerciseIndex = -1;
             nextStep(); // Cette fois, nextStep va lancer l'exercice suivant (Ex1 de la prochaine série)
         }
     }, 1000);

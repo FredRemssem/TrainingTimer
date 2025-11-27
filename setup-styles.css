@@ -66,6 +66,7 @@
     cursor: pointer;
     transition: background-color 0.15s;
     background-color: #0070f3; /* Bleu primaire */
+    margin: 0;
 }
 .stepper-single button:hover, .stepper-complex button:hover {
     background-color: #005bb5;
@@ -125,7 +126,7 @@
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Espace vertical dans le bloc */
+    gap: 0px; /* Espace vertical dans le bloc */
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
@@ -166,15 +167,16 @@
 .remove-btn.compact {
     padding: 5px 10px; /* Rendre le bouton plus petit */
     font-size: 1.2em;
-    background-color: #dc3545; /* Rouge pour supprimer */
+    background-color: #d32436; /* Rouge pour supprimer */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     line-height: 1;
+    margin: 0;
 }
 .remove-btn.compact:hover {
-    background-color: #c82333;
+    background-color: #835055;
 }
 
 /* Le conteneur des contrôles (Reps) */
@@ -197,6 +199,7 @@
     font-size: 0.9em;
     font-weight: normal;
     color: #aaa;
+    padding: 5px;
 }
 
 /* Aligner Reps et Repos en ligne */
@@ -208,7 +211,7 @@
 
 /* Ajustement des inputs/boutons dans le stepper compact */
 .compact-stepper input[type="number"] {
-    width: 25px; 
+    width: 20px; 
     padding: 5px;
     font-size: 0.9em;
 }
